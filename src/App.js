@@ -5,7 +5,7 @@ import { Player } from "./components/Player";
 
 import './App.css'
 
-const Moves=["Rock","Paper","Scessor"];
+const Moves=["Rock","Scessor","Paper"];
 
 class App extends Component{
 
@@ -46,27 +46,55 @@ class App extends Component{
     const {PlayerOne,PlayerTwo,PlayerOneScore,PlayerTwoScore} =this.state;
 
     
-    if(Moves.indexOf(PlayerOne)>Moves.indexOf(PlayerTwo))
-    { 
-      this.setState({
-        PlayerOneScore:PlayerOneScore+1
-      })
-
-      return "Player  Won The Match"
-    }else
-    if(Moves.indexOf(PlayerOne)<Moves.indexOf(PlayerTwo))
-    {
-      this.setState({
-        PlayerTwoScore:PlayerTwoScore+1
-      })
-
-
-      return "Computer Two Won The Match"
-    }else
+    if(PlayerOne===PlayerTwo)
     {
       return "It's a Tie"
-    }
+    }else if(PlayerOne==="Rock")
+    {
+      if(PlayerTwo==="Scessor")
+      {
+        this.setState({
+          PlayerOneScore:PlayerOneScore+1
+        })
+        return "Player  Won The Match"
+      }else
+      {
+        this.setState({
+          PlayerTwoScore:PlayerTwoScore+1
+        })
+        return "Computer Two Won The Match"
+      }
 
+    }else if(PlayerOne==="Paper")
+    {
+      if(PlayerTwo==="Rock")
+      { this.setState({
+        PlayerOneScore:PlayerOneScore+1
+      })
+        return "Player  Won The Match"
+
+      }else
+      { this.setState({
+        PlayerTwoScore:PlayerTwoScore+1
+      })
+        return "Computer Two Won The Match"
+      }
+
+    }else if(PlayerOne==="Scessor")
+    {
+      if(PlayerTwo==="Paper")
+      {
+        this.setState({
+          PlayerOneScore:PlayerOneScore+1
+        })
+        return "Player  Won The Match"
+      }else
+      { this.setState({
+        PlayerTwoScore:PlayerTwoScore+1
+      })
+        return "Computer Two Won The Match"
+      }
+    }
   }
 
   selectWeapon =(e)=>
